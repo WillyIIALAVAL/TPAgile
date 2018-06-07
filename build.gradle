@@ -1,7 +1,8 @@
 apply plugin : 'java'
 apply plugin : 'eclipse'
 apply plugin : 'pmd'
-
+apply plugin: 'findbugs'
+	
 repositories {
 	jcenter()
 	mavenCentral()
@@ -42,4 +43,18 @@ tasks.withType(Pmd){
 
 test {
 	ignoreFailures = true
+}
+
+findbugs{
+	findbugsTest.enabled = false
+	ignoreFailures = true
+}
+
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled true
+        html.enabled false
+        ignoreFailures = true
+        // html.stylesheet resources.text.fromFile('config/xsl/findbugs-custom.xsl')
+    }
 }
