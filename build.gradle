@@ -8,7 +8,7 @@ apply plugin : 'pmd'
 apply plugin: 'findbugs'
 apply plugin: 'checkstyle'
 apply plugin: 'jacoco'
-
+apply plugin: 'jdepend'
 
 repositories {
 	jcenter()
@@ -51,9 +51,9 @@ tasks.withType(Pmd){
 test {
 	ignoreFailures = true
 	
-	/* jacoco {
+	jacoco {
 		enabled = false
-	} */
+	} 
 }
 
 
@@ -114,3 +114,9 @@ jacocoTestReport {
 		html.enabled true	
 	}
 }
+
+/* Jdepend */	
+jdepend{
+	jdependTest.enabled = false
+	ignoreFailures = true
+}	
