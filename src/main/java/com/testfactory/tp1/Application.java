@@ -20,18 +20,18 @@ public final class Application {
 	}
 	
 	/**
-	 * Main method.
-	 * @param args. 
+	 * Main method
+	 * @param args table of string
 	 */
 	public static void main (final String[] args){
 		System.out.println("Hello baby");
 	}
 
 	/**
-	 * Add two value.
-	 * @param i first value.
-	 * @param j second value.
-	 * @return result of addition.
+	 * Add two numbers
+	 * @param number1 first integer
+	 * @param number2 second integer
+	 * @return an integer
 	 */
 	public static int add(final int number1,final int number2) {
 		return number1 + number2;
