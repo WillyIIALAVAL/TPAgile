@@ -10,13 +10,20 @@ package com.testfactory.tp1;
  * @author Willy
  *
  */
-public class Application {
-
+public final class Application {
+	
+	/**
+	 * Constructor
+	 */
+	private Application(){
+		
+	}
+	
 	/**
 	 * Main method.
 	 * @param args. 
 	 */
-	public static void main (String[] args){
+	public static void main (final String[] args){
 		System.out.println("Hello baby");
 	}
 
@@ -26,8 +33,8 @@ public class Application {
 	 * @param j second value.
 	 * @return result of addition.
 	 */
-	public static int add(int i, int j) {
-		return i + j;
+	public static int add(final int number1,final int number2) {
+		return number1 + number2;
 	}
 	
 }
