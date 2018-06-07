@@ -2,6 +2,7 @@ apply plugin : 'java'
 apply plugin : 'eclipse'
 apply plugin : 'pmd'
 apply plugin: 'findbugs'
+apply plugin: 'checkstyle'
 	
 repositories {
 	jcenter()
@@ -45,6 +46,9 @@ test {
 	ignoreFailures = true
 }
 
+
+/* Find bugs */
+
 findbugs{
 	findbugsTest.enabled = false
 	ignoreFailures = true
@@ -58,3 +62,22 @@ tasks.withType(FindBugs) {
         // html.stylesheet resources.text.fromFile('config/xsl/findbugs-custom.xsl')
     }
 }
+
+/* Check Style */
+checkstyle{
+	checkstyleTest.enabled = false
+	ignoreFailures = true
+	toolVersion "8.10.1"	
+}
+
+tasks.withType(Checkstyle) {
+    reports {
+        xml.enabled true
+        html.enabled false
+        //html.stylesheet resources.text.fromFile('config/xsl/checkstyle-custom.xsl')
+        ignoreFailures = true
+        
+
+    }
+}
+
