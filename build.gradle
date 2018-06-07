@@ -7,6 +7,7 @@ apply plugin : 'eclipse'
 apply plugin : 'pmd'
 apply plugin: 'findbugs'
 apply plugin: 'checkstyle'
+apply plugin: 'jacoco'
 
 
 repositories {
@@ -49,6 +50,10 @@ tasks.withType(Pmd){
 
 test {
 	ignoreFailures = true
+	
+	/* jacoco {
+		enabled = false
+	} */
 }
 
 
@@ -56,7 +61,7 @@ test {
 
 findbugs{
 	findbugsTest.enabled = false
-			ignoreFailures = true
+	ignoreFailures = true
 }
 
 tasks.withType(FindBugs) {
@@ -71,8 +76,8 @@ tasks.withType(FindBugs) {
 /* Check Style */
 checkstyle{
 	checkstyleTest.enabled = false
-			ignoreFailures = true
-			toolVersion "8.10.1"	
+	ignoreFailures = true
+	toolVersion "8.10.1"	
 }
 
 tasks.withType(Checkstyle) {
@@ -81,8 +86,6 @@ tasks.withType(Checkstyle) {
 		html.enabled false
 		//html.stylesheet resources.text.fromFile('config/xsl/checkstyle-custom.xsl')
 		ignoreFailures = true
-
-
 	}
 }
 
@@ -94,8 +97,20 @@ cpd {
 cpdCheck {
 	reports {
 		text.enabled = false
-				xml.enabled = true
+		xml.enabled = true
 	}
 	source = sourceSets.main.allJava 
 }
 
+
+/* Jacoco */
+jacoco {
+	reportsDir = file("$buildDir/reports/jacoco")
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled true
+		html.enabled true	
+	}
+}
